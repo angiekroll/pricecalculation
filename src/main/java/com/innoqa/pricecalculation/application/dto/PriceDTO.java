@@ -4,7 +4,6 @@
 package com.innoqa.pricecalculation.application.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,9 +21,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PriceDTO {
 
-  private String productId;
-  private String brandId;
-  private String priceId;
+  private Long productId;
+  private Long brandId;
+  private Long priceId;
   private String startDate;
   private String endDate;
   private BigDecimal finalPrice;

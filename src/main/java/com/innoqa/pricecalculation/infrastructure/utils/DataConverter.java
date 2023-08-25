@@ -14,10 +14,6 @@ public class DataConverter {
 
   private DataConverter() {}
 
-  public static long parseToLong(String value) {
-    return Long.parseLong(value);
-  }
-
   public static LocalDateTime parseToLocalDateTime(String value) {
     return LocalDateTime.parse(value);
   }

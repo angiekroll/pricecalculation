@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  */
 public interface PriceProductUseCase {
 
-  PriceDTO getProductPrice(String date, String productId, String brandId)
+  PriceDTO getProductPrice(String date, Long productId, Long brandId)
       throws PriceCalculationException;
 
 }

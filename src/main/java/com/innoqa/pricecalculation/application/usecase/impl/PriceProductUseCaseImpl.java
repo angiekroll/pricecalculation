@@ -30,11 +30,11 @@ public class PriceProductUseCaseImpl implements PriceProductUseCase {
   }
 
   @Override
-  public PriceDTO getProductPrice(String applicationDate, String productId, String brandId)
+  public PriceDTO getProductPrice(String applicationDate, Long productId, Long brandId)
       throws PriceCalculationException {
 
     Price price = priceProductService.getPrice(DataConverter.parseToLocalDateTime(applicationDate),
-        DataConverter.parseToLong(productId), DataConverter.parseToLong(brandId));
+        productId, brandId);
 
     return PriceMapper.INSTANCE.priceToPriceDTO(price);
   }
