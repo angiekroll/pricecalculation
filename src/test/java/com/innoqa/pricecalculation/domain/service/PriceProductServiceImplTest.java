@@ -35,11 +35,8 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @since - 1.0.0
  */
 
-//@RunWith(MockitoJUnitRunner.class)
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 class PriceProductServiceImplTest {
-
-//  private PriceProductService priceProductService;
 
   @Mock
   private PriceRepository priceRepository;
@@ -50,7 +47,6 @@ class PriceProductServiceImplTest {
   @BeforeEach
   public void setUp() {
     MockitoAnnotations.openMocks(this);
-//    priceProductService = new PriceProductService(priceProductService);
   }
 
   @Test

@@ -5,7 +5,6 @@ package com.innoqa.pricecalculation.domain.service;
 
 import com.innoqa.pricecalculation.application.exception.PriceCalculationException;
 import com.innoqa.pricecalculation.domain.model.Price;
-import com.innoqa.pricecalculation.infrastructure.persistence.repository.PriceRepository;
 import java.time.LocalDateTime;
 
 /**

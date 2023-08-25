@@ -1,7 +1,7 @@
 /**
  * Copyright 2023, Neoris. All rights reserved Date: 24/08/23
  */
-package com.innoqa.pricecalculation.integrationtest;
+package com.innoqa.pricecalculation.infrastructure.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
