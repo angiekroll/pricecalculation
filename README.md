@@ -45,8 +45,22 @@ LOCAL STEPS:
 - Compile the project
 - Run
 - Tester Potsman or from url Swagger: http://localhost:8080/price-calculation/swagger-ui.html
- 
+
   <img src="./src/main/resources/images/swagger.png" width="320">
+
+- The application has basic security, so when sending the request the postman must be configured
+  with "Basic Auth"
+
+```
+Username: admin
+Password admin
+``` 
+
+- In the header there must be the key Content-Type: application/json
+
+  <img src="./src/main/resources/images/AuthConfigCredentials.png" width="320">
+  <img src="./src/main/resources/images/AuthConfigHeader.png" width="320">
+
 
 ### DOCKER:
 
@@ -66,7 +80,8 @@ STEPS WITH DOCKER:
    docker run -d -p 8080:8080 price-calculation
     ```
 8. The Postman collection is attached to all endpoints in the mail so it can be downloaded and used
-   to make the corresponding requests. Also you can use the following url Swagger: http://localhost:8080/price-calculation/swagger-ui.html Or the following curl:
+   to make the corresponding requests. Also you can use the following url
+   Swagger: http://localhost:8080/price-calculation/swagger-ui.html Or the following curl:
    ```
     curl --location 'http://localhost:8080/price-calculation/prices?applicationDate=2020-06-15T10%3A00%3A00&productId=35455&brandId=1'
     ```

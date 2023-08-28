@@ -44,6 +44,16 @@ dependencies {
     // Documentation
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.0.3'
 
+    // Security basic
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // JWT
+    // implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+
+    // RabbitMQ
+    // implementation group: 'org.springframework.boot', name: 'spring-boot-starter-amqp', version: '2.6.2'
+
+
 }
 
 tasks.named('test') {
