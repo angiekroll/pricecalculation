@@ -47,13 +47,6 @@ dependencies {
     // Security basic
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
-    // JWT
-    // implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
-
-    // RabbitMQ
-    // implementation group: 'org.springframework.boot', name: 'spring-boot-starter-amqp', version: '2.6.2'
-
-
 }
 
 tasks.named('test') {

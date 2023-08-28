@@ -5,6 +5,9 @@ package com.innoqa.pricecalculation.infrastructure.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,13 +27,21 @@ class PriceControllerIntegrationTest {
 
   @Autowired
   private MockMvc mockMvc;
+  private String authHeader;
+
+  @BeforeEach
+  void setUp() {
+    authHeader = getAuth();
+  }
 
   @Test
   void givenApplicationDateWhitDay14AndTime10_WhenGetPrice_ThenReturnPriceIdOne() throws Exception {
+
     mockMvc.perform(get("/prices")
             .param("applicationDate", "2020-06-14T10:00:00")
             .param("productId", "35455")
-            .param("brandId", "1"))
+            .param("brandId", "1")
+            .header("Authorization", authHeader))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$.productId").value(35455))
         .andExpect(MockMvcResultMatchers.jsonPath("$.brandId").value(1))
@@ -44,7 +55,8 @@ class PriceControllerIntegrationTest {
     mockMvc.perform(get("/prices")
             .param("applicationDate", "2020-06-14T16:00:00")
             .param("productId", "35455")
-            .param("brandId", "1"))
+            .param("brandId", "1")
+            .header("Authorization", authHeader))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$.productId").value(35455))
         .andExpect(MockMvcResultMatchers.jsonPath("$.brandId").value(1))
@@ -57,7 +69,8 @@ class PriceControllerIntegrationTest {
     mockMvc.perform(get("/prices")
             .param("applicationDate", "2020-06-14T21:00:00")
             .param("productId", "35455")
-            .param("brandId", "1"))
+            .param("brandId", "1")
+            .header("Authorization", authHeader))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$.productId").value(35455))
         .andExpect(MockMvcResultMatchers.jsonPath("$.brandId").value(1))
@@ -71,7 +84,8 @@ class PriceControllerIntegrationTest {
     mockMvc.perform(get("/prices")
             .param("applicationDate", "2020-06-15T10:00:00")
             .param("productId", "35455")
-            .param("brandId", "1"))
+            .param("brandId", "1")
+            .header("Authorization", authHeader))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$.productId").value(35455))
         .andExpect(MockMvcResultMatchers.jsonPath("$.brandId").value(1))
@@ -85,12 +99,22 @@ class PriceControllerIntegrationTest {
     mockMvc.perform(get("/prices")
             .param("applicationDate", "2020-06-16T21:00:00")
             .param("productId", "35455")
-            .param("brandId", "1"))
+            .param("brandId", "1")
+            .header("Authorization", authHeader))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$.productId").value(35455))
         .andExpect(MockMvcResultMatchers.jsonPath("$.brandId").value(1))
         .andExpect(MockMvcResultMatchers.jsonPath("$.priceId").value(4))
         .andExpect(MockMvcResultMatchers.jsonPath("$.finalPrice").value(38.95));
+  }
+
+  private String getAuth() {
+    String username = "admin";
+    String password = "admin";
+
+    String auth = username + ":" + password;
+    byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes(StandardCharsets.UTF_8));
+    return "Basic " + new String(encodedAuth);
   }
 
 }
