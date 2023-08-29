@@ -83,8 +83,11 @@ STEPS WITH DOCKER:
    to make the corresponding requests. Also you can use the following url
    Swagger: http://localhost:8080/price-calculation/swagger-ui.html Or the following curl:
    ```
-    curl --location 'http://localhost:8080/price-calculation/prices?applicationDate=2020-06-15T10%3A00%3A00&productId=35455&brandId=1'
-    ```
+    curl --location 'http://localhost:8080/price-calculation/prices?applicationDate=2020-06-15T10%3A00%3A00&productId=35455&brandId=1' \
+    --header 'Content-Type: application/json' \
+    --header 'Authorization: Basic YWRtaW46YWRtaW4=' \
+    --header 'Cookie: JSESSIONID=D638DAB160E023113067F6977CB494D4'
+   ```
 9. To access the H2 DB, once the application is deployed, you
    must go to the following route:
     - http://localhost:8080/price-calculation/h2/
